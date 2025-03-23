@@ -8,6 +8,9 @@ function depthFirstSearch(graph, startNode, targetNode) {
         if (startNode == targetNode){
             return true;
         }
+        if (!graph[startNode] || graph.length < 1) {
+            return false;
+        }
     
         var lengthh = (graph[startNode].length)
     
@@ -30,44 +33,10 @@ function depthFirstSearch(graph, startNode, targetNode) {
 
     checked.push(startNode);
     var found = search(graph, startNode, targetNode, checked, que);
-    if (found) {
+    if (found && (graph.length > 0)) {
         que.push(startNode);
         que.reverse();
     }
 
     return que;
 }
-
-var adjList1 = [
-    [1,3], //0
-    [0,2,3],//1
-    [1,4],//2
-    [0,1,4],//3
-    [2,3]//4
-]
-
-var adjList2 = [
-    [1],
-    [3],
-    [0,1],
-    [0],
-    [2]
-]
-
-console.log(depthFirstSearch(adjList1, 4, 0));
-console.log(depthFirstSearch(adjList2, 0, 4));
-var AdjMatrix1 = [
-    [0,1,0,1,0],
-    [1,0,1,1,0],
-    [0,1,0,0,1],
-    [1,1,0,0,1],
-    [0,0,1,1,0]
-]
-
-var AdjMatrix2 = [
-    [0,1,0,0,0],
-    [0,0,0,1,0],
-    [1,1,0,0,0],
-    [1,0,0,0,1],
-    [0,0,1,0,0]
-]
