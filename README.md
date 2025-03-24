@@ -27,10 +27,10 @@ What is the worst-case big $\Theta$ complexity of your implementation? Add your
 answer, including your reasoning, to this markdown file.
 
 ## My answer:
-My code only has one loop in it and this loop iterates though each connection to the starting node. worst case the node could be connected to every other node including itself so this loop runs n times. 
-Inside the loop i have a checked array that stores all the nodes i have checked already, this line has a complexity of n because in the worste case it might have to check every item in the list to see if the list includes the item or not.
+My code only has one loop in it and this loop iterates though each connection to the starting node. worst case the node could be connected to every other node including itself so this loop runs |v| times. 
+Inside the loop i have a checked array that stores all the nodes i have checked already, this line has a complexity of |v| because in the worste case it might have to check every item in the list to see if the list includes the item or not.
 Then in the loop i also have it calling the search function again. the maximum number of times this function can be called is n times as if the graph looks like alinked list we would have to traverse every node to get to the desired one at the end.
-so our recurrence relation looks like f(n) = n * (n + f(n-1)) $\in \theta(n^2)$
+so our recurrence relation looks like f(|v|) = |v| * (|v| + f(|v|-1)) $\in \theta(|v|^2)$
 
 ![my math](image.png)
 
