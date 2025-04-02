@@ -34,7 +34,7 @@ so our recurrence relation looks like f(|v|) = |v| * (|v| + f(|v|-1)) $\in \thet
 
 ![my math](image.png)
 
-As you can see in the work that i did in the worst case it would end up being O(n^2) but otherwise less than that.
+As you can see in the work that i did in the worst case it would end up being O(|v|^2) but otherwise less than that.
 
 ## Bonus
 
