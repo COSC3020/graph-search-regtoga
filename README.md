@@ -26,6 +26,19 @@ the function and run automatically when you commit through a GitHub action.
 What is the worst-case big $\Theta$ complexity of your implementation? Add your
 answer, including your reasoning, to this markdown file.
 
+## My answer:
+My code only has one loop in it and this loop iterates though each connection to the starting node. worst case the node could be connected to every other node including itself so this loop runs |v| times. 
+Inside the loop i have a checked array that stores all the nodes i have checked already, this line has a complexity of |v| because in the worste case it might have to check every item in the list to see if the list includes the item or not.
+Then in the loop i also have it calling the search function again. the maximum number of times this function can be called is n times as if the graph looks like alinked list we would have to traverse every node to get to the desired one at the end.
+so our recurrence relation looks like f(|v|) = |v| * (|v| + f(|v|-1)) $\in \theta(|v|^2)$
+
+![my math](image.png)
+
+As you can see in the work that i did in the worst case it would end up being O(|v|^2) but otherwise less than that.
+
 ## Bonus
 
 Implement and analyze breadth-first search.
+
+
+I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.
