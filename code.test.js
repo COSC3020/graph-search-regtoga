@@ -59,7 +59,7 @@ function allTests() {
         depthFirstSearch(graph2, 0, 4).join(',') === [0, 4].join(','),
         depthFirstSearch(graph3, 0, 4).join(',') === [0, 1, 2, 3, 4].join(','),
         depthFirstSearch(graph4, 0, 1).join(',') === [0, 1].join(','),
-        depthFirstSearch(graph4, 0, 4).join(',') === [1].join(','),
+        depthFirstSearch(graph4, 0, 4).join(',') === [].join(','),
         depthFirstSearch(graph5, 0, 4).join(',') === [0, 1, 2, 3, 4].join(','),
         depthFirstSearch(graph6, 0, 2).join(',') === [0, 1, 2].join(',')
     ];
