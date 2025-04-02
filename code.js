@@ -16,14 +16,13 @@ function depthFirstSearch(graph, startNode, targetNode) {
     
         for (let i = 0; i < lengthh; i++){
             var newnode = graph[startNode][i];
-            if (!(checked.includes(newnode))){
-                checked.push(newnode);
-                returnvalue = search(graph, newnode, targetNode, checked, que);
+            if (!(checked.includes(i)) && newnode != 0){
+                checked.push(i);
+                returnvalue = search(graph, i, targetNode, checked, que);
             }
             
-    
             if (returnvalue == true){
-                que.push(newnode);
+                que.push(i);
                 return true;
             }
         }

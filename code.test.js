@@ -1,29 +1,70 @@
-//gotta look into my test code more didnt see the concerns before
 const fs = require('fs');
 const jsc = require('jsverify');
 
 eval(fs.readFileSync('code.js')+'');
 
-//check if graph is a valid adjacency list
-function isValidAdjList(graph) {
-    return Array.isArray(graph) && graph.every(node => Array.isArray(node));
+const graph1 = [
+    [0, 1, 0, 0, 0],
+    [1, 0, 1, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 1, 0, 1],
+    [0, 0, 0, 1, 0]
+];
+
+const graph2 = [
+    [0, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0]
+];
+
+const graph3 = [
+    [0, 1, 0, 0, 1],
+    [1, 0, 1, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 1, 0, 1],
+    [1, 0, 0, 1, 0]
+];
+
+const graph4 = [
+    [0, 1, 0, 0, 0],
+    [1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0]
+];
+
+const graph5 = [
+    [1, 1, 0, 0, 0],
+    [1, 0, 1, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 1, 0, 1],
+    [0, 0, 0, 1, 0]
+];
+
+const graph6 = [
+    [0, 1, 0, 0, 0, 0, 0],
+    [1, 0, 1, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 0],
+    [0, 0, 0, 1, 0, 0, 1],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0]
+];
+
+function allTests() {
+    const results = [
+        depthFirstSearch(graph1, 0, 4).join(',') === [0, 1, 2, 3, 4].join(','),
+        depthFirstSearch(graph2, 0, 4).join(',') === [0, 4].join(','),
+        depthFirstSearch(graph3, 0, 4).join(',') === [0, 1, 2, 3, 4].join(','),
+        depthFirstSearch(graph4, 0, 1).join(',') === [0, 1].join(','),
+        depthFirstSearch(graph4, 0, 4).join(',') === [].join(','),
+        depthFirstSearch(graph5, 0, 4).join(',') === [0, 1, 2, 3, 4].join(','),
+        depthFirstSearch(graph6, 0, 2).join(',') === [0, 1, 2].join(',')
+    ];
+    //console.log(results)
+    return results.every(Boolean);
 }
 
-jsc.assert(
-    jsc.forall(
-        jsc.array(jsc.array(jsc.nat())),  // Generate adjacency list
-        jsc.nat(),  // start node
-        jsc.nat(),  // target node
-        (graph, start, target) => {
-            // ensure the graph is valid and start + target nodes are in range
-            if (!isValidAdjList(graph) || start >= graph.length || target >= graph.length) {
-                return true;  // Skip invalid cases
-            }
-
-            let result = depthFirstSearch(graph, start, target);
-
-            // result should always be an array (valid path or empty)
-            return Array.isArray(result);
-        }
-    )
-);
+jsc.check(allTests);
