@@ -63,7 +63,6 @@ function allTests() {
         depthFirstSearch(graph5, 0, 4).join(',') === [0, 1, 2, 3, 4].join(','),
         depthFirstSearch(graph6, 0, 2).join(',') === [0, 1, 2].join(',')
     ];
-    //console.log(results)
     return results.every(Boolean);
 }
 
